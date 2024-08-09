@@ -1,1 +1,1 @@
-# springboot-MongoDB-JPA
+# springboot-MongoDB
