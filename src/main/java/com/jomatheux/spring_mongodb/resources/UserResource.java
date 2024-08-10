@@ -1,5 +1,6 @@
 package com.jomatheux.spring_mongodb.resources;
 
+import com.jomatheux.spring_mongodb.domain.Post;
 import com.jomatheux.spring_mongodb.domain.User;
 import com.jomatheux.spring_mongodb.dto.UserDTO;
 import com.jomatheux.spring_mongodb.services.UserService;
@@ -53,5 +54,11 @@ public class UserResource {
         obj.setId(id);
         obj = userService.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        User obj = userService.findOne(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 }
